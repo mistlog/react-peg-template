@@ -1,15 +1,23 @@
 import { ReactPeg } from "react-peg";
+import * as Tracer from "pegjs-backtrace";
 
 let result = null;
 
+const input = "1.5 + 2 + 3.4 * ( 25 - 4 ) / 2 - 8";
+// test error report:
+// const input = "1.5 + 2 + 3.4 * ( 25 - 4 ) /  - 8";
+const tracer = new Tracer(input, { useColor: false });
+
 try {
-    const parser = ReactPeg.render(<Expression />);
-    const ast = parser.parse("1.5 + 2 + 3.4 * ( 25 - 4 ) / 2 - 8");
+    const parser = ReactPeg.render(<Expression />, { tracer });
+    const ast = parser.parse(input);
     result = ast;
 } catch (error) {
     result = error;
 }
 
+const backtrace = tracer.getBacktraceString();
+console.log(backtrace);
 console.log(result);
 
 /**
