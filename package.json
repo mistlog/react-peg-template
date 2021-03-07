@@ -24,6 +24,6 @@
     },
     "dependencies": {
         "pegjs-backtrace": "^0.2.0",
-        "react-peg": "^0.1.7-0"
+        "react-peg": "^0.1.7"
     }
 }
