@@ -4,6 +4,8 @@ import * as Tracer from "pegjs-backtrace";
 let result = null;
 
 const input = "1.5 + 2 + 3.4 * ( 25 - 4 ) / 2 - 8";
+// test error report:
+// const input = "1.5 + 2 + 3.4 * ( 25 - 4 ) /  - 8";
 const tracer = new Tracer(input, { useColor: false });
 
 try {
